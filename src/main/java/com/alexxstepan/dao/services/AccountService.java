@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -18,5 +19,17 @@ public class AccountService {
 
 	public List<Account> getAll() {
 		return IterableUtils.toList(repository.findAll());
+	}
+
+	public Optional<Account> get(long id) {
+		return repository.findById(id);
+	}
+
+	public void save(Account account) {
+		repository.save(account);
+	}
+
+	public void delete(Account account) {
+		repository.delete(account);
 	}
 }
