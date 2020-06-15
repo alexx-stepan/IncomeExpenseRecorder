@@ -10,6 +10,8 @@ public class Transaction {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
+	@ManyToOne(optional = false)
 	private Account account;
 	private String categoryName;
 	private LocalDateTime bookingDate;
