@@ -25,8 +25,8 @@ public class AccountService {
 		return repository.findById(id);
 	}
 
-	public void save(Account account) {
-		repository.save(account);
+	public Account save(Account account) {
+		return repository.save(account);
 	}
 
 	public void delete(Account account) {

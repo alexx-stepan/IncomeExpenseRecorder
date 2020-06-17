@@ -32,17 +32,17 @@ public class TransactionController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public void save(@RequestBody Transaction transaction) {
-		service.save(transaction);
+	public Transaction save(@RequestBody Transaction transaction) {
+		return service.save(transaction);
 	}
 
 	@RequestMapping(method = RequestMethod.PUT)
-	public void update(Transaction transaction) {
-		service.save(transaction);
+	public Transaction update(@RequestBody Transaction transaction) {
+		return service.save(transaction);
 	}
 
 	@RequestMapping(method = RequestMethod.DELETE)
-	public void delete(Transaction transaction) {
+	public void delete(@RequestBody Transaction transaction) {
 		service.delete(transaction);
 	}
 }

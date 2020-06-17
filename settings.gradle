@@ -1,2 +1,4 @@
 rootProject.name = 'IncomeExpenseRecorder'
 
+include 'backend'
+include 'client'

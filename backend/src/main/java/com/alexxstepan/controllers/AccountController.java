@@ -22,8 +22,8 @@ public class AccountController {
 		return service.getAll();
 	}
 
-	@RequestMapping("/{id}")
-	public Account get(@PathVariable long id) {
+	@RequestMapping({"/{id}"})
+	public Account get(/* @RequestParam */ @PathVariable long id) {
 		Optional<Account> account = service.get(id);
 
 		return account.orElseThrow(() -> {
@@ -32,17 +32,17 @@ public class AccountController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public void save(@RequestBody Account account) {
-		service.save(account);
+	public Account save(@RequestBody Account account) {
+		return service.save(account);
 	}
 
 	@RequestMapping(method = RequestMethod.PUT)
-	public void update(Account account) {
-		service.save(account);
+	public Account update(@RequestBody Account account) {
+		return service.save(account);
 	}
 
 	@RequestMapping(method = RequestMethod.DELETE)
-	public void delete(Account account) {
+	public void delete(@RequestBody Account account) {
 		service.delete(account);
 	}
 }
