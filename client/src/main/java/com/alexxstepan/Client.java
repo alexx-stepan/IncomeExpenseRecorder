@@ -30,7 +30,6 @@ public class Client {
 		for (int i = 0; i < 10; i++) {
 			executor.submit(new TransactionGenerator(account));
 		}
-
 	}
 
 	private Account createAccount() throws IOException {

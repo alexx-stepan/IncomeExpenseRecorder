@@ -12,6 +12,8 @@ public class Account {
 	private Long accountNumber;
 	private String ownerName;
 	private String currencyCode;
+
+	@Column(updatable = false)
 	private Integer balance;
 
 	public Account() {}

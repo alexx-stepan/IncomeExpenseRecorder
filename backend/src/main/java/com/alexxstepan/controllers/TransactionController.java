@@ -36,6 +36,13 @@ public class TransactionController {
 		return service.save(transaction);
 	}
 
+//	@RequestMapping(method = RequestMethod.POST)
+//	public Callable<Transaction> save(@RequestBody Transaction transaction) {
+//		return () -> {
+//			return service.save(transaction);
+//		};
+//	}
+
 	@RequestMapping(method = RequestMethod.PUT)
 	public Transaction update(@RequestBody Transaction transaction) {
 		return service.save(transaction);

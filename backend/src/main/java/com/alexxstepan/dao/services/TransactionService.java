@@ -1,7 +1,6 @@
 package com.alexxstepan.dao.services;
 
 import com.alexxstepan.dao.repositories.TransactionRepository;
-import com.alexxstepan.entities.Account;
 import com.alexxstepan.entities.Transaction;
 import org.apache.commons.collections4.IterableUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +16,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 @Service
-@Transactional
+//@Transactional
 public class TransactionService {
 
 	@Autowired
@@ -69,13 +68,13 @@ public class TransactionService {
 	}
 
 	public Transaction save(Transaction transaction) {
+		Long accountId = transaction.getAccount().getId();
+
 		lock.lock();
 
 		Transaction saved = repository.save(transaction);
-		Account account = accountService.get(transaction.getAccount().getId()).get();
-
-		account.setBalance(account.getBalance() + transaction.getAmount());
-		saved.setAccount(accountService.save(account));
+		accountService.increaseBalanceFor(accountId, transaction.getAmount());
+		saved.setAccount(accountService.findById(accountId).get());
 
 		lock.unlock();
 

@@ -11,22 +11,26 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@Transactional
+//@Transactional
 public class AccountService {
 
 	@Autowired
 	private AccountRepository repository;
 
-	public List<Account> getAll() {
+	public List<Account> findAll() {
 		return IterableUtils.toList(repository.findAll());
 	}
 
-	public Optional<Account> get(long id) {
+	public Optional<Account> findById(long id) {
 		return repository.findById(id);
 	}
 
 	public Account save(Account account) {
 		return repository.save(account);
+	}
+
+	void increaseBalanceFor(Long id, int amount) {
+		repository.increaseBalanceFor(id, amount);
 	}
 
 	public void delete(Account account) {

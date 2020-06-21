@@ -19,12 +19,12 @@ public class AccountController {
 
 	@RequestMapping("list")
 	public List<Account> getAll() {
-		return service.getAll();
+		return service.findAll();
 	}
 
 	@RequestMapping({"/{id}"})
 	public Account get(/* @RequestParam */ @PathVariable long id) {
-		Optional<Account> account = service.get(id);
+		Optional<Account> account = service.findById(id);
 
 		return account.orElseThrow(() -> {
 			return new ResponseStatusException(HttpStatus.BAD_REQUEST, "There is no account with ID " + id);
