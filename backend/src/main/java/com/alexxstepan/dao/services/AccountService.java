@@ -26,6 +26,8 @@ public class AccountService {
 	}
 
 	public Account save(Account account) {
+		if (account.getId() == null)
+			account.setBalance(0);
 		return repository.save(account);
 	}
 

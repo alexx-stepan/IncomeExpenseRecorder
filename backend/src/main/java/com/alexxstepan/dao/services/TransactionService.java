@@ -31,39 +31,39 @@ public class TransactionService {
 		lock = new ReentrantLock();
 	}
 
-	public List<Transaction> getAll() {
+	public List<Transaction> findAll() {
 		return IterableUtils.toList(repository.findAll());
 	}
 
-	public List<Transaction> getAll(int page, int size) {
+	public List<Transaction> findAll(int page, int size) {
 		return IterableUtils.toList(repository.findAll(PageRequest.of(page, size)));
 	}
 
-	public List<Transaction> getAll(Long accountId) {
+	public List<Transaction> findAll(Long accountId) {
 		return IterableUtils.toList(repository.findByAccountId(accountId));
 	}
 
-	public List<Transaction> getAll(Long accountId, int page, int size) {
+	public List<Transaction> findAll(Long accountId, int page, int size) {
 		return IterableUtils.toList(repository.findByAccountId(accountId, PageRequest.of(page, size)));
 	}
 
-	public List<Transaction> getAllGreaterThan(LocalDate from, LocalDate to, Integer amount) {
+	public List<Transaction> findAllGreaterThan(LocalDate from, LocalDate to, Integer amount) {
 		return IterableUtils.toList(repository.findByBookingDateBetweenAndAmountGreaterThan(from, to, amount));
 	}
 
-	public List<Transaction> getAllGreaterThan(LocalDate from, LocalDate to, Long accountId, Integer amount) {
+	public List<Transaction> findAllGreaterThan(LocalDate from, LocalDate to, Long accountId, Integer amount) {
 		return IterableUtils.toList(repository.findByBookingDateBetweenAndAccountIdAndAmountGreaterThan(from, to, accountId, amount));
 	}
 
-	public List<Transaction> getAllLessThan(LocalDate from, LocalDate to, Integer amount) {
+	public List<Transaction> findAllLessThan(LocalDate from, LocalDate to, Integer amount) {
 		return IterableUtils.toList(repository.findByBookingDateBetweenAndAmountLessThan(from, to, amount));
 	}
 
-	public List<Transaction> getAllLessThan(LocalDate from, LocalDate to, Long accountId, Integer amount) {
+	public List<Transaction> findAllLessThan(LocalDate from, LocalDate to, Long accountId, Integer amount) {
 		return IterableUtils.toList(repository.findByBookingDateBetweenAndAccountIdAndAmountLessThan(from, to, accountId, amount));
 	}
 
-	public Optional<Transaction> get(long id) {
+	public Optional<Transaction> find(long id) {
 		return repository.findById(id);
 	}
 
@@ -79,6 +79,14 @@ public class TransactionService {
 		lock.unlock();
 
 		return saved;
+	}
+
+	public long count() {
+		return repository.count();
+	}
+
+	public long countByAccountId(Long accountId) {
+		return repository.countByAccountId(accountId);
 	}
 
 	public void delete(Transaction transaction) {

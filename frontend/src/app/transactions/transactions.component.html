@@ -1,0 +1,58 @@
+<div>
+  <div class="mat-elevation-z8">
+    <div>
+      <label>account:
+        <select [(ngModel)]="transaction.account">
+          <option value="null">Select account</option>
+          <option *ngFor="let acc of accounts" [ngValue]="acc">{{acc.ownerName}}</option>
+        </select>
+      </label>
+      <label>category name:
+        <input [(ngModel)]="transaction.categoryName" placeholder="category name"/>
+      </label>
+      <label>amount:
+        <input [(ngModel)]="transaction.amount" placeholder="amount"/>
+      </label>
+
+      <button *ngIf="transaction.id == null" (click)="createTransaction()">Create</button>
+      <button (click)="cancelEditing()">Cancel</button>
+
+    </div>
+
+    <br>
+
+    <table mat-table [dataSource]="dataSource">
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Id </th>
+        <td mat-cell *matCellDef="let transaction"> {{transaction.id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="account">
+        <th mat-header-cell *matHeaderCellDef> Account </th>
+        <td mat-cell *matCellDef="let transaction"> {{transaction.account.ownerName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef> Category </th>
+        <td mat-cell *matCellDef="let transaction"> {{transaction.categoryName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef> Date </th>
+        <td mat-cell *matCellDef="let transaction"> {{transaction.bookingDate}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef> Amount </th>
+        <td mat-cell *matCellDef="let transaction"> {{transaction.amount}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+</div>
+

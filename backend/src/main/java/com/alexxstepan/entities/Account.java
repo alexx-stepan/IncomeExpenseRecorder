@@ -17,11 +17,11 @@ public class Account {
 	private Integer balance;
 
 	public Account() {}
-	public Account(Long accountNumber, String ownerName, String currencyCode, Integer balance) {
+	public Account(Long accountNumber, String ownerName, String currencyCode) {
 		this.accountNumber = accountNumber;
 		this.ownerName = ownerName;
 		this.currencyCode = currencyCode;
-		this.balance = balance;
+		this.balance = 0;
 	}
 
 	/** GETTERS AND SETTERS */

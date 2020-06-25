@@ -3,7 +3,6 @@ package com.alexxstepan.entities;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -17,12 +16,12 @@ public class Transaction {
 	@ManyToOne(optional = false)
 	private Account account;
 	private String categoryName;
-	@JsonFormat(pattern="yyyy-MM-dd")
-	private LocalDate bookingDate;
+//	@JsonFormat(pattern="yyyy-MM-dd")
+	private LocalDateTime bookingDate;
 	private Integer amount;
 
 	public Transaction() {}
-	public Transaction(Account account, String categoryName, LocalDate bookingDate, Integer amount) {
+	public Transaction(Account account, String categoryName, LocalDateTime bookingDate, Integer amount) {
 		this.account = account;
 		this.categoryName = categoryName;
 		this.bookingDate = bookingDate;
@@ -55,11 +54,11 @@ public class Transaction {
 		this.categoryName = categoryName;
 	}
 
-	public LocalDate getBookingDate() {
+	public LocalDateTime getBookingDate() {
 		return bookingDate;
 	}
 
-	public void setBookingDate(LocalDate bookingDate) {
+	public void setBookingDate(LocalDateTime bookingDate) {
 		this.bookingDate = bookingDate;
 	}
 

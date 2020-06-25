@@ -10,6 +10,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class TransactionGenerator implements Runnable {
@@ -26,7 +27,8 @@ public class TransactionGenerator implements Runnable {
 
 	@Override
 	public void run() {
-		String bookingDate = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+//		String bookingDate = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+		String bookingDate = LocalDateTime.now().format(DateTimeFormatter.ISO_DATE_TIME);
 		try {
 			for (int i = 1; i <= 20; i++) {
 				HttpPost post = new HttpPost("http://localhost:8080/api/transaction");

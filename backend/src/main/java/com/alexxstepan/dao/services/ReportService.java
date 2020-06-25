@@ -17,25 +17,25 @@ public class ReportService {
 	private TransactionService transactionService;
 
 	public List<CategoryTotal> getTotalIncome(LocalDate from, LocalDate to) {
-		List<Transaction> transactions = transactionService.getAllGreaterThan(from, to, 0);
+		List<Transaction> transactions = transactionService.findAllGreaterThan(from, to, 0);
 
 		return convertToTotal(transactions);
 	}
 
 	public List<CategoryTotal> getTotalIncome(LocalDate from, LocalDate to, Long accountId) {
-		List<Transaction> transactions = transactionService.getAllGreaterThan(from, to, accountId, 0);
+		List<Transaction> transactions = transactionService.findAllGreaterThan(from, to, accountId, 0);
 
 		return convertToTotal(transactions);
 	}
 
 	public List<CategoryTotal> getTotalExpense(LocalDate from, LocalDate to) {
-		List<Transaction> transactions = transactionService.getAllLessThan(from, to, 0);
+		List<Transaction> transactions = transactionService.findAllLessThan(from, to, 0);
 
 		return convertToTotal(transactions);
 	}
 
 	public List<CategoryTotal> getTotalExpense(LocalDate from, LocalDate to, Long accountId) {
-		List<Transaction> transactions = transactionService.getAllLessThan(from, to, accountId, 0);
+		List<Transaction> transactions = transactionService.findAllLessThan(from, to, accountId, 0);
 
 		return convertToTotal(transactions);
 	}

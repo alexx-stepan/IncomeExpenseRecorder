@@ -22,4 +22,6 @@ public interface TransactionRepository extends PagingAndSortingRepository<Transa
 	List<Transaction> findByBookingDateBetweenAndAmountLessThan(LocalDate from, LocalDate to, Integer amount);
 
 	List<Transaction> findByBookingDateBetweenAndAccountIdAndAmountLessThan(LocalDate from, LocalDate to, Long accountId, Integer amount);
+
+	long countByAccountId(Long accountId);
 }

@@ -1,0 +1,24 @@
+<div>
+  <div style="display: inline-block">
+    <ul class="accounts">
+      <li *ngFor="let account of accounts" (click)="editAccount(account)">
+        <a>
+          <span class="badge">{{account.id}}</span> number: {{account.accountNumber}} | owner: {{account.ownerName}} | currency: {{account.currencyCode}} | balance: {{account.balance}}
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div style="display: inline-block; position: absolute;">
+    <label>owner name:
+      <input [(ngModel)]="acc.ownerName" placeholder="owner name"/>
+    </label>
+    <label>currency code:
+      <input [(ngModel)]="acc.currencyCode" placeholder="currency code"/>
+    </label>
+    <button *ngIf="acc.id == null" (click)="createAccount()">Create</button>
+    <button *ngIf="acc.id" (click)="saveAccount()">Save</button>
+    <button (click)="cancelEditing()">Cancel</button>
+
+  </div>
+</div>

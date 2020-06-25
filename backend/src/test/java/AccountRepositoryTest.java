@@ -30,10 +30,10 @@ public class AccountRepositoryTest {
 
 	@Test
 	public void test_insert_accounts() {
-		repository.save(new Account(1L, "owner1", "USD", 0));
-		repository.save(new Account(2L, "owner2", "EUR", 10));
-		repository.save(new Account(3L, "owner3", "CAD", 20));
-		repository.save(new Account(4L, "owner4", "USD", 30));
+		repository.save(new Account(1L, "owner1", "USD"));
+		repository.save(new Account(2L, "owner2", "EUR"));
+		repository.save(new Account(3L, "owner3", "CAD"));
+		repository.save(new Account(4L, "owner4", "USD"));
 
 		Assert.assertEquals(4, IterableUtils.size(repository.findAll()));
 	}
